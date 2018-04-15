@@ -3,7 +3,7 @@ package General;
 public class Demo2 {
     public static void main(String[] args) {
         for (int i = 0; i < 10; i++) {
-            new Thread(new HelloRunnableThread()).start();
+            new Thread(() -> System.out.println("Hello from " + Thread.currentThread().getName())).start();
         }
         System.out.println("Hello from main thread");
     }

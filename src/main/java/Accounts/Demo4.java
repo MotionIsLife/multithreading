@@ -1,6 +1,11 @@
 package Accounts;
 
 public class Demo4 {
+    /**
+     * Снимает со счета и добавляем по 100К
+     * @param args
+     * @throws InterruptedException
+     */
     public static void main(String[] args) throws InterruptedException {
         Account account = new Account(100_000);
         System.out.println("begin balance " + account.getBalance());

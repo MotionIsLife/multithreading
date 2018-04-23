@@ -1,6 +1,11 @@
 package Accounts2;
 
 public class Demo5 {
+    /***
+     * Снимем со счета 50К тогда, когда на нем будет нужная сумма
+     * @param args
+     * @throws InterruptedException
+     */
     public static void main(String[] args) throws InterruptedException {
         Account account = new Account();
         new DepositThread(account).start();

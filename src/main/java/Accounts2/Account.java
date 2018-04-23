@@ -28,9 +28,10 @@ public class Account {
     public synchronized void waitAndWithdraw(long amount) throws InterruptedException {
         checkAmountNotNegative(amount);
         while (balance < amount) {
-            wait();
+            wait(100L);
         }
         balance -= amount;
+        System.out.println(balance);
     }
 
     public long getBalance() {

@@ -1,4 +1,4 @@
-package Accounts2;
+package Demo4;
 
 public class Account {
     private long balance;
@@ -11,6 +11,16 @@ public class Account {
         this.balance = balance;
     }
 
+    public void withdraw(long amount) {
+        synchronized (this) {
+            checkAmountNotNegative(amount);
+            if(balance < amount) {
+                throw new IllegalArgumentException("not enough money");
+            }
+            balance -= amount;
+        }
+    }
+
     private void checkAmountNotNegative(long amount) {
         if(amount < 0) {
             throw new IllegalArgumentException("negative amount");
@@ -21,17 +31,7 @@ public class Account {
         synchronized (this) {
             checkAmountNotNegative(amount);
             balance += amount;
-            notifyAll();
         }
-    }
-
-    public synchronized void waitAndWithdraw(long amount) throws InterruptedException {
-        checkAmountNotNegative(amount);
-        while (balance < amount) {
-            wait(100L);
-        }
-        balance -= amount;
-        System.out.println(balance);
     }
 
     public long getBalance() {

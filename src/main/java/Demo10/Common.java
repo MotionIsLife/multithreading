@@ -21,7 +21,7 @@ public class Common {
         return sum;
     }
 
-    private static Double function(int i) {
+    public static Double function(int i) {
         return Math.sin(i);
     }
 }
